@@ -11,6 +11,8 @@ import java.io.Serializable;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  *
  * @TableName user
@@ -30,6 +32,7 @@ public class User implements Serializable {
      */
     @ApiModelProperty("用户名")
     @Length(max= 50,message="编码长度不能超过50")
+    @NotBlank(message="用户名不能为空")
     @TableField(value = "username")
     private String username;
     /**
@@ -45,6 +48,7 @@ public class User implements Serializable {
      */
     @ApiModelProperty("昵称")
     @Length(max= 50,message="编码长度不能超过50")
+    @NotBlank(message="昵称不能为空")
     @TableField(value = "nickname")
     private String nickname;
     /**
@@ -64,8 +68,9 @@ public class User implements Serializable {
     /**
      * 电话
      */
-    @ApiModelProperty("电话")
+    @ApiModelProperty("联系方式")
     @Length(max= 20,message="编码长度不能超过20")
+    @NotBlank(message="联系方式不能为空")
     @TableField(value = "phone")
     private String phone;
     /**

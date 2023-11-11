@@ -47,6 +47,11 @@ public class UserController {
         return CommonResult.success(userService.list());
     }
 
+    @GetMapping("/{id}")
+    public CommonResult<User> getById(@PathVariable Long id){
+        return CommonResult.success(userService.getById(id));
+    }
+
     /**
      * 删除用户
      * @param id

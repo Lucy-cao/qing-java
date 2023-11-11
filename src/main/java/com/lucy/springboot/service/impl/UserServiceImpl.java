@@ -19,6 +19,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +33,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     private Sequence sequence;
 
     public boolean saveUser(User user) {
+        //新增用户
+        if(user.getId()==null) {
+            user.setId(sequence.nextId());
+            user.setPassword("test123");
+            user.setCreateTime(new Date());
+        }
         return saveOrUpdate(user);
     }
 
