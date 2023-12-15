@@ -30,4 +30,10 @@ public class UserVo {
      */
     @ApiModelProperty("头像")
     private String avatarUrl;
+
+    /**
+     * token
+     */
+    @ApiModelProperty("token")
+    private String token;
 }

@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lucy.springboot.domain.common.api.CommonResult;
 import com.lucy.springboot.domain.common.exception.ApiException;
+import com.lucy.springboot.domain.common.utils.TokenUtil;
 import com.lucy.springboot.domain.dto.UserLoginParam;
 import com.lucy.springboot.domain.dto.UserPageParam;
 import com.lucy.springboot.domain.vo.UserVo;
@@ -63,6 +64,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
         UserVo userVo = new UserVo();
         BeanUtils.copyProperties(user, userVo);
+        userVo.setToken(TokenUtil.genToken(user.getId().toString(), user.getPassword()));
         return userVo;
     }
 
